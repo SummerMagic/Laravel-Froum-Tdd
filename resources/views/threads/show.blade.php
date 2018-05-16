@@ -8,18 +8,15 @@
 					<div class="panel-heading">
 						{{ $thread->title }}
 					</div>
-
 					<div class="panel-body">
 						{{ $thread->body }}
 					</div>
 				</div>
 			</div>
-
 			<div class="col-md-8 col-md-offset-2">
 				@foreach($thread->replies as $reply)
 					@include('threads.reply')
 				@endforeach
-
 			</div>
 		</div>
 	</div>

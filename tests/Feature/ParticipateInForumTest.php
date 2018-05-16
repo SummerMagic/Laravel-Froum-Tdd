@@ -10,10 +10,24 @@ class ParticipateInForumTest extends TestCase
 
 	use DatabaseMigrations;
 
+	/** @test */
+	public function unauthenticated_user_may_no_add_replies()
+	{
+		$this->expectException('Illuminate\Auth\AuthenticationException');
+
+		$thread = factory('App\Thread')->create();
+
+		$reply = factory('App\Reply')->create();
+
+		$this->post($thread->path().'/replies',$reply->toArray());
+	}
+
 	function an_authenticated_user_may_participate_in_forum_threads()
 	{
 		// Given we have a authenticated user
-		$this->be($user = factory('App\User')->create());
+//		$this->be($user = factory('App\User')->create());
+
+		$user = factory('App\User')->create();
 
 		// And an existing thread
 		$thread = factory('App\Thread')->create();
