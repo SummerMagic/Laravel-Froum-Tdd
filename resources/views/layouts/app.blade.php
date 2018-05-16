@@ -12,8 +12,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+	<script>
+		window.Laravel = {{!! json_encode([
+			'csrfToken' =>csrf_token(),
+		]) !!}}
+	</script>
 </head>
-<body>
+<body style="padding-bottom: 100px;">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
